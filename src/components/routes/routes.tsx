@@ -1,14 +1,11 @@
 import React, { FC } from "react"
-import Loadable from "react-loadable"
+import Loadable from "@loadable/component"
 import { Router } from "@reach/router"
 
-const Loading: FC = () => {
-    return <div></div>
-}
+const Loading = <>Loading...</>
 
-const Home = Loadable({
-    loader: () => import("../../containers/home"),
-    loading: Loading,
+const Home = Loadable(() => import("../../containers/home"), {
+    fallback: Loading,
 })
 
 const Routes: FC = () => {
