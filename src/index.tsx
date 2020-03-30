@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FC } from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import configureStore from "./store"
@@ -7,15 +7,17 @@ import Router from "./components/routes/routes"
 
 import "./css/reset.css"
 
-const tagManagerArgs: TagManagerArgs = {
-    gtmId: process.env.REACT_APP_GTM!,
+const App: FC = () => {
+    const tagManagerArgs: TagManagerArgs = {
+        gtmId: process.env.REACT_APP_GTM!,
+    }
+    TagManager.initialize(tagManagerArgs)
+
+    return (
+        <Provider store={configureStore()}>
+            <Router />
+        </Provider>
+    )
 }
 
-TagManager.initialize(tagManagerArgs)
-
-ReactDOM.render(
-    <Provider store={configureStore()}>
-        <Router />
-    </Provider>,
-    document.getElementById("root")
-)
+ReactDOM.render(<App />, document.getElementById("root"))

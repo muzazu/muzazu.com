@@ -1,6 +1,5 @@
 import React, { FC } from "react"
-import { breakPoints } from "../../types/theme"
-import { theme } from "../../types/theme"
+import { breakPoints, theme } from "../../types/theme"
 import { useSelector } from "react-redux"
 import { mq } from "./breakpoints"
 
