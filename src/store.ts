@@ -5,15 +5,13 @@ import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 
 export default function configureStore(initialState = {}) {
-    const middlewares:[any] = [thunk]
+    const middlewares: [any] = [thunk]
+    let composeDevTool: any = middlewares
     if (process.env.NODE_ENV !== "production") {
         middlewares.push(createLogger())
+        composeDevTool = composeWithDevTools(applyMiddleware(...middlewares))
     }
-    const store = createStore(
-        rootReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(...middlewares))
-    )
+    const store = createStore(rootReducer, initialState, composeDevTool)
 
     return store
 }
