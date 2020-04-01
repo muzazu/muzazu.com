@@ -5,7 +5,11 @@ import configureStore from "./store"
 import TagManager, { TagManagerArgs } from "react-gtm-module"
 import Router from "./components/routes/routes"
 
-import "./css/reset.css"
+// css
+import "./sass/app.scss"
+
+// libs
+import "./libs/fonts"
 
 const App: FC = () => {
     const tagManagerArgs: TagManagerArgs = {
