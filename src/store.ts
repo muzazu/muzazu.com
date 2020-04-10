@@ -1,11 +1,11 @@
-import { createStore, applyMiddleware } from "redux"
+import { createStore, applyMiddleware, Action } from "redux"
 import { createLogger } from "redux-logger"
-import rootReducer from "./reducers"
-import thunk from "redux-thunk"
+import rootReducer, { RootState } from "./reducers"
+import thunk, { ThunkAction, ThunkMiddleware } from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 
 export default function configureStore(initialState = {}) {
-    const middlewares: [any] = [thunk]
+    const middlewares: [any] = [thunk as ThunkMiddleware]
     let composeDevTool: any
     if (process.env.NODE_ENV !== "production") {
         middlewares.push(createLogger())
@@ -18,3 +18,10 @@ export default function configureStore(initialState = {}) {
 
     return store
 }
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    undefined,
+    Action<string>
+>
