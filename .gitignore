@@ -12,6 +12,9 @@
 /build
 deploy.sh
 
+# Development files
+/public/static
+
 # misc
 .DS_Store
 .env
