@@ -65,7 +65,7 @@ const HomeComponent: FC<Props> = ({
                             xs={1 / 1}
                             m={1 / 3}
                             xl={1 / 3}
-                            css={{ height: "100%", alignSelf: "flex-end" }}
+                            css={{ alignSelf: "flex-end" }}
                         >
                             <GutterPxs p={24}>
                                 <Human
