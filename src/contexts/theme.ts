@@ -1,6 +1,6 @@
 import { theme } from "../types/theme"
 import merge from "lodash/merge"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 
 // default state
 const defaultTheme: theme = {
@@ -10,7 +10,7 @@ const defaultTheme: theme = {
     textSize: "14px",
     lang: "en",
     breakPoints: {
-        xs: 480,
+        xs: 0,
         s: 768,
         m: 1024,
         l: 1280,
