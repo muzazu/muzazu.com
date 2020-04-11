@@ -49,7 +49,7 @@ const PostComponent: FC<Props> = ({
                 </Helmet>
                 <Section>
                     <FlexWrapper justifyContent="center">
-                        <FlexItem s={1 / 1} m={2 / 3} xxl={1 / 3}>
+                        <FlexItem xs={1 / 1} m={2 / 3}>
                             <article>
                                 <GutterPxs p={32}>
                                     <header
