@@ -53,12 +53,7 @@ const HomeComponent: FC<Props> = ({
                         >
                             <GutterPxs p={32}>
                                 <h1>
-                                    <Link to="/">
-                                        <img
-                                            src="/android-chrome-192x192.png"
-                                            alt="muzazu.com"
-                                        />
-                                    </Link>
+                                    <Link to="/">Muzazu.com</Link>
                                 </h1>
                                 <h2>
                                     Hellow there, here's my{" "}
@@ -108,9 +103,7 @@ const HomeComponent: FC<Props> = ({
                                     )
                                 )
                             ) : (
-                                <FlexItem
-                                    css={{ alignSelf: "center" }}
-                                >
+                                <FlexItem css={{ alignSelf: "center" }}>
                                     <GutterPxs p={12}>
                                         There is nothing here yet
                                     </GutterPxs>
