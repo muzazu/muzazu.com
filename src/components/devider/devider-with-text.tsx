@@ -1,4 +1,6 @@
 import React, { FC } from "react"
+import { useTheme } from "emotion-theming"
+import { theme } from "../../types/theme"
 
 interface Props {
     alignText?:
@@ -21,26 +23,31 @@ export const DeviderWithText: FC<Props> = ({
     borderColor,
     backgroundText,
     text,
-}) => (
-    <div
-        css={{
-            width: "100%",
-            display: "flex",
-            justifyContent: alignText || "center",
-            borderTop: `${borderWidth || "1"}px solid ${borderColor || "#ddd"}`,
-            position: "relative",
-        }}
-    >
+}) => {
+    const Theme: theme = useTheme()
+    return (
         <div
             css={{
-                position: "absolute",
-                top: "-14px",
-                background: backgroundText || "#fff",
-                padding: "4px 32px",
-                fontWeight: "bold",
+                width: "100%",
+                display: "flex",
+                justifyContent: alignText || "center",
+                borderTop: `${borderWidth || "1"}px solid ${
+                    borderColor || "#ddd"
+                }`,
+                position: "relative",
             }}
         >
-            {text}
+            <div
+                css={{
+                    position: "absolute",
+                    top: "-14px",
+                    background: backgroundText || Theme.background,
+                    padding: "4px 32px",
+                    fontWeight: "bold",
+                }}
+            >
+                {text}
+            </div>
         </div>
-    </div>
-)
+    )
+}

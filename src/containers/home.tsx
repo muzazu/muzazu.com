@@ -49,7 +49,7 @@ const HomeComponent: FC<Props> = ({
                             xs={1 / 1}
                             m={2 / 3}
                             xl={2 / 3}
-                            alignSelf="center"
+                            css={{ alignSelf: "center" }}
                         >
                             <GutterPxs p={32}>
                                 <h1>
@@ -70,8 +70,7 @@ const HomeComponent: FC<Props> = ({
                             xs={1 / 1}
                             m={1 / 3}
                             xl={1 / 3}
-                            alignSelf="flex-end"
-                            css={{ height: "100%" }}
+                            css={{ height: "100%", alignSelf: "flex-end" }}
                         >
                             <GutterPxs p={24}>
                                 <Human
@@ -95,16 +94,23 @@ const HomeComponent: FC<Props> = ({
                         </GutterPxs>
                         <FlexWrapper alignItems="stretch">
                             {articles.length ? (
-                                (articles as Array<
-                                    article
-                                >).map((data: article) => (
-                                    <PostItem
-                                        key={`${data.metadata.dateId}-${data.metadata.title}`}
-                                        article={data}
-                                    />
-                                ))
+                                (articles as Array<article>).map(
+                                    (data: article) => (
+                                        <FlexItem
+                                            xs={1 / 1}
+                                            s={1 / 2}
+                                            m={1 / 4}
+                                            css={{ width: "100%" }}
+                                            key={`${data.metadata.title}-${data.metadata.created_at}`}
+                                        >
+                                            <PostItem article={data} />
+                                        </FlexItem>
+                                    )
+                                )
                             ) : (
-                                <FlexItem xs={1 / 4} alignSelf="center">
+                                <FlexItem
+                                    css={{ alignSelf: "center" }}
+                                >
                                     <GutterPxs p={12}>
                                         There is nothing here yet
                                     </GutterPxs>
