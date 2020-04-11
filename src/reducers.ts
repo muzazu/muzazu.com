@@ -1,4 +1,9 @@
 import { combineReducers } from "redux"
 import theme from "./reducers/theme"
+import { articlesIds, articles } from "./reducers/articles"
 
-export default combineReducers({ theme })
+const rootReducer = combineReducers({ theme, articlesIds, articles })
+
+export type RootState = ReturnType<typeof rootReducer>
+
+export default rootReducer
