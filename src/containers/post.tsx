@@ -6,6 +6,10 @@ import { getArticleDetail, setSelectedId } from "../actions/articles"
 import { articleDetail } from "../selectors/articles"
 import Helmet from "react-helmet"
 import Loadable from "@loadable/component"
+import { HeaderNavigation } from "../components/navigations/header-navigation"
+import { GutterPxs } from "../components/gutters/gutters"
+import { FlexWrapper, FlexItem } from "../components/grids/flex"
+import { Section } from "../components/sections/section"
 
 const mapStateToProps = (state: RootState) => ({
     article: articleDetail(state),
@@ -44,12 +48,41 @@ const PostComponent: FC<Props> = ({
                         content={article.metadata.desc as string}
                     />
                 </Helmet>
-                <article>
-                    <header>
-                        <h1>{article.metadata.title}</h1>
-                    </header>
-                    <MD source={article.content as string} />
-                </article>
+                <HeaderNavigation />
+                <Section>
+                    <FlexWrapper justifyContent="center">
+                        <FlexItem s={1 / 1} m={2 / 3} xxl={1 / 3}>
+                            <article>
+                                <GutterPxs p={32}>
+                                    <header
+                                        css={{ borderBottom: "1px solid #ddd" }}
+                                    >
+                                        <h1 css={{ fontSize: "2.2em" }}>
+                                            {article.metadata.title}
+                                        </h1>
+                                        <div css={{ color: "#888" }}>
+                                            <GutterPxs pb={12}>
+                                                <span>Created:</span>
+                                                <time
+                                                    dateTime={
+                                                        article.metadata
+                                                            .created_at as string
+                                                    }
+                                                >
+                                                    {
+                                                        article.metadata
+                                                            .created_at
+                                                    }
+                                                </time>
+                                            </GutterPxs>
+                                        </div>
+                                    </header>
+                                    <MD source={article.content as string} />
+                                </GutterPxs>
+                            </article>
+                        </FlexItem>
+                    </FlexWrapper>
+                </Section>
             </>
         )
     else return <div>Loading...</div>

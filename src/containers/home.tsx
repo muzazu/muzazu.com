@@ -10,6 +10,8 @@ import { RootState } from "../reducers"
 import { getArticlesIds, getArticles } from "../actions/articles"
 import { articleList } from "../selectors/articles"
 import { article } from "../types/articles"
+import { PostItem } from "../components/post/post-item"
+import { DeviderWithText } from "../components/devider/devider-with-text"
 
 const mapStateToProps = (state: RootState) => ({
     articles: articleList(state),
@@ -51,7 +53,12 @@ const HomeComponent: FC<Props> = ({
                         >
                             <GutterPxs p={32}>
                                 <h1>
-                                    <Link to="/">muzazu.</Link>
+                                    <Link to="/">
+                                        <img
+                                            src="/android-chrome-192x192.png"
+                                            alt="muzazu.com"
+                                        />
+                                    </Link>
                                 </h1>
                                 <h2>
                                     Hellow there, here's my{" "}
@@ -81,30 +88,21 @@ const HomeComponent: FC<Props> = ({
                 </Section>
             </FullSizeJumbroton>
             <div id="stories">
-                <FullSizeJumbroton>
-                    <Section>
+                <Section>
+                    <GutterPxs p={32}>
+                        <GutterPxs mb={32}>
+                            <DeviderWithText text="Stories" />
+                        </GutterPxs>
                         <FlexWrapper alignItems="stretch">
                             {articles.length ? (
-                                (articles as Array<article>).map(
-                                    (data: article) => (
-                                        <FlexItem
-                                            xs={1 / 4}
-                                            alignSelf="center"
-                                            key={`${data.metadata.title}-${data.metadata.created_at}`}
-                                        >
-                                            <Link
-                                                to={`/${data.metadata.dateId}/${data.metadata.title}`}
-                                            >
-                                                <GutterPxs p={12}>
-                                                    <h3>
-                                                        {data.metadata.title}
-                                                    </h3>
-                                                    <p>{data.metadata.desc}</p>
-                                                </GutterPxs>
-                                            </Link>
-                                        </FlexItem>
-                                    )
-                                )
+                                (articles as Array<
+                                    article
+                                >).map((data: article) => (
+                                    <PostItem
+                                        key={`${data.metadata.dateId}-${data.metadata.title}`}
+                                        article={data}
+                                    />
+                                ))
                             ) : (
                                 <FlexItem xs={1 / 4} alignSelf="center">
                                     <GutterPxs p={12}>
@@ -113,8 +111,8 @@ const HomeComponent: FC<Props> = ({
                                 </FlexItem>
                             )}
                         </FlexWrapper>
-                    </Section>
-                </FullSizeJumbroton>
+                    </GutterPxs>
+                </Section>
             </div>
         </>
     )
