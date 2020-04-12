@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { breakPoints, theme } from "../../types/theme"
-import { useSelector } from "react-redux"
 import { mq } from "./breakpoints"
 
 interface FlexWrapperProps {
@@ -82,35 +81,18 @@ const widthTransform = (
     )
 }
 
-interface FlexItemProps extends breakPoints {
-    alignSelf?:
-        | "auto"
-        | "flex-start"
-        | "flex-end"
-        | "center"
-        | "baseline"
-        | "stretch"
-}
+interface FlexItemProps extends breakPoints {}
 
-export const FlexItem: FC<FlexItemProps> = ({
-    children,
-    alignSelf,
-    xs,
-    s,
-    m,
-    l,
-    xl,
-    xxl,
-}) => {
-    const breakpoint: object = useSelector(
-        (state: RootState) => state.theme.breakPoints
-    )
+export const FlexItem: FC<FlexItemProps> = (props) => {
+    const { children, xs, s, m, l, xl, xxl } = props
     return (
         <div
-            css={mq(breakpoint)({
-                alignSelf: alignSelf,
-                width: widthTransform([xs, s, m, l, xl, xxl]),
-            })}
+            css={(theme: theme) =>
+                mq(theme.breakPoints)({
+                    width: widthTransform([xs, s, m, l, xl, xxl]),
+                })
+            }
+            {...props}
         >
             {children}
         </div>

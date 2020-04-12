@@ -1,16 +1,18 @@
 export interface breakPoints {
-    xs?: number,
-    s?: number,
-    m?: number,
-    l?: number,
-    xl?: number,
+    xs?: number
+    s?: number
+    m?: number
+    l?: number
+    xl?: number
     xxl?: number
 }
 
 export interface theme {
+    mode: "night" | "light"
     color: string
+    background: string
     textSize: string
-    lang: string,
+    lang: string
     breakPoints: breakPoints
 }
 

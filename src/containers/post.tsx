@@ -6,7 +6,6 @@ import { getArticleDetail, setSelectedId } from "../actions/articles"
 import { articleDetail } from "../selectors/articles"
 import Helmet from "react-helmet"
 import Loadable from "@loadable/component"
-import { HeaderNavigation } from "../components/navigations/header-navigation"
 import { GutterPxs } from "../components/gutters/gutters"
 import { FlexWrapper, FlexItem } from "../components/grids/flex"
 import { Section } from "../components/sections/section"
@@ -48,10 +47,9 @@ const PostComponent: FC<Props> = ({
                         content={article.metadata.desc as string}
                     />
                 </Helmet>
-                <HeaderNavigation />
                 <Section>
                     <FlexWrapper justifyContent="center">
-                        <FlexItem s={1 / 1} m={2 / 3} xxl={1 / 3}>
+                        <FlexItem xs={1 / 1} m={2 / 3}>
                             <article>
                                 <GutterPxs p={32}>
                                     <header

@@ -16,7 +16,7 @@ const NotFound: FC<RouteComponentProps> = () => (
         </Helmet>
         <Section>
             <FlexWrapper justifyContent="center" alignItems="stretch">
-                <FlexItem alignSelf="center">
+                <FlexItem css={{ alignSelf: "center" }}>
                     <NotFoundSVG
                         css={{
                             display: "block",
