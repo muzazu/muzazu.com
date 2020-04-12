@@ -49,7 +49,7 @@ const HomeComponent: FC<Props> = ({
             </Helmet>
             <FullSizeJumbroton>
                 <Section>
-                    <FlexWrapper alignItems="stretch">
+                    <FlexWrapper css={{ alignItems: "stretch" }}>
                         <FlexItem
                             xs={1 / 1}
                             m={2 / 3}
@@ -92,7 +92,7 @@ const HomeComponent: FC<Props> = ({
                         <GutterPxs mb={32}>
                             <DeviderWithText text="Stories" />
                         </GutterPxs>
-                        <FlexWrapper alignItems="stretch">
+                        <FlexWrapper css={{ alignItems: "stretch" }}>
                             {articles.length ? (
                                 (articles as Array<article>).map(
                                     (data: article) => (
