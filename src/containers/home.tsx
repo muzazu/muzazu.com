@@ -12,6 +12,7 @@ import { articleList } from "../selectors/articles"
 import { article } from "../types/articles"
 import { PostItem } from "../components/post/post-item"
 import { DeviderWithText } from "../components/devider/devider-with-text"
+import Helmet from "react-helmet"
 
 const mapStateToProps = (state: RootState) => ({
     articles: articleList(state),
@@ -42,6 +43,10 @@ const HomeComponent: FC<Props> = ({
 
     return (
         <>
+            <Helmet>
+                <title>muzazu</title>
+                <meta name="description" content="poofs my stories" />
+            </Helmet>
             <FullSizeJumbroton>
                 <Section>
                     <FlexWrapper alignItems="stretch">
