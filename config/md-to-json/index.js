@@ -45,10 +45,26 @@ const handleMDtoJSON = (contents) => {
 }
 
 /**
- * handle write file
- * @param {{object, object}} param0
+ * format date
+ * @param {string} date
  */
-const handleWriteFile = async ({ selectors, data }) => {
+const formatDate = (date) => {
+    var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear()
+
+    if (month.length < 2) month = "0" + month
+    if (day.length < 2) day = "0" + day
+
+    return [year, month, day].join("-")
+}
+
+/**
+ * handle write file
+ * @param {{object, object, string}} param0
+ */
+const handleWriteFile = async ({ selectors, data, sitemap }) => {
     try {
         let staticPath
         if (process.env.NODE_ENV === "production") {
@@ -67,7 +83,14 @@ const handleWriteFile = async ({ selectors, data }) => {
             JSON.stringify(selectors).replace(".md", "")
         )
 
+        if (process.env.NODE_ENV === "production")
+            await fsPromises.writeFile(
+                path.resolve(staticPath, "sitemap.xml"),
+                sitemap
+            )
+
         const uIds = Object.keys(data)
+
         for (const uId of uIds) {
             await fsPromises.writeFile(
                 path.resolve(staticPath, `${uId}.json`),
@@ -88,6 +111,21 @@ const handleReadDir = async (folderPath) => {
         const contents = await fsPromises.readdir(folderPath)
         const selectors = []
         let data = {}
+        let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+            <url>
+
+                <loc>${process.env.REACT_APP_DOMAIN}</loc>
+
+                <lastmod>${formatDate(new Date())}</lastmod>
+
+                <changefreq>always</changefreq>
+
+                <priority>1</priority>
+
+            </url>
+        `
         for (const file of contents) {
             const content = await fsPromises.readFile(
                 path.resolve(folderPath, file)
@@ -95,12 +133,35 @@ const handleReadDir = async (folderPath) => {
             const contentParsed = handleMDtoJSON(content.toString())
             const date = new Date(contentParsed.metadata.created_at)
             const uId = `${date.getMonth()}-${date.getFullYear()}`
-            const item = { [contentParsed.metadata.title]: contentParsed }
+            const item = {
+                [contentParsed.metadata.title.toLowerCase()]: contentParsed,
+            }
             data[uId] = merge(data[uId], item)
-            selectors.push(`${uId}:${contentParsed.metadata.title}`)
-        }
+            selectors.push(
+                `${uId}:${contentParsed.metadata.title.toLowerCase()}`
+            )
 
-        handleWriteFile({ selectors, data })
+            sitemap += `
+            <url>
+
+                <loc>${process.env.REACT_APP_DOMAIN}${uId}/${encodeURIComponent(
+                contentParsed.metadata.title.toLowerCase()
+            )}</loc>
+
+                <lastmod>${formatDate(
+                    contentParsed.metadata.created_at
+                )}</lastmod>
+
+                <changefreq>monthly</changefreq>
+
+                <priority>0.8</priority>
+
+            </url>
+            `
+        }
+        sitemap += `</urlset>`
+
+        handleWriteFile({ selectors, data, sitemap })
     } catch (error) {
         throw new Error(JSON.stringify(error))
     }

@@ -13,7 +13,9 @@ export const PostItem: FC<Props> = ({ article }) => {
     const Theme: theme = useTheme()
     return (
         <Link
-            to={`/${article.metadata.dateId}/${article.metadata.title}`}
+            to={`/${
+                article.metadata.dateId
+            }/${article.metadata.title.toLowerCase()}`}
             css={{ textDecoration: "none" }}
         >
             <article css={{ border: "1px solid #ddd" }}>
