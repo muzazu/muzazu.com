@@ -1,6 +1,6 @@
 import { theme } from "../types/theme"
 import merge from "lodash/merge"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 // default state
 const defaultTheme: theme = {
@@ -38,23 +38,6 @@ const Theme = loadStorage()
 
 export const useThemeConfig = () => {
     const [localTheme, setTheme] = useState(Theme)
-
-    useEffect(() => {
-        try {
-            const getTheme = window.localStorage.getItem("theme")
-            if (getTheme) {
-                const combinedTheme: theme = merge(Theme, JSON.parse(getTheme))
-                setTheme(combinedTheme)
-                window.localStorage.setItem(
-                    "theme",
-                    JSON.stringify(combinedTheme)
-                )
-            }
-            setTheme(Theme)
-        } catch (err) {
-            setTheme(Theme)
-        }
-    }, [localTheme])
 
     type mode = "night" | "light"
 
