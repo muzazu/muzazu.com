@@ -2,66 +2,17 @@ import React, { FC } from "react"
 import { breakPoints, theme } from "../../types/theme"
 import { mq } from "./breakpoints"
 
-interface FlexWrapperProps {
-    justifyContent?:
-        | "flex-start"
-        | "flex-end"
-        | "center"
-        | "space-between"
-        | "space-around"
-        | "initial"
-        | "inherit"
-    alignItems?:
-        | "stretch"
-        | "center"
-        | "flex-start"
-        | "flex-end"
-        | "baseline"
-        | "initial"
-        | "inherit"
-    alignContent?:
-        | "stretch"
-        | "center"
-        | "flex-start"
-        | "flex-end"
-        | "baseline"
-        | "initial"
-        | "inherit"
-    flexWrap?: "nowrap" | "wrap" | "wrap-reverse" | "initial" | "inherit"
-    flexDirection?:
-        | "row"
-        | "row-reverse"
-        | "column"
-        | "column-reverse"
-        | "initial"
-        | "inherit"
-}
-
-export const FlexWrapper: FC<FlexWrapperProps> = ({
-    children,
-    justifyContent,
-    alignItems,
-    alignContent,
-    flexWrap,
-    flexDirection,
-}) => {
+export const FlexWrapper: FC = (props) => {
     return (
         <div
             css={{
                 display: "flex",
-                justifyContent,
-                alignItems,
-                alignContent,
-                flexWrap,
-                flexDirection,
             }}
+            {...props}
         >
-            {children}
+            {props.children}
         </div>
     )
-}
-FlexWrapper.defaultProps = {
-    flexWrap: "wrap",
 }
 
 /**

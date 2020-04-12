@@ -48,7 +48,7 @@ const PostComponent: FC<Props> = ({
                     />
                 </Helmet>
                 <Section>
-                    <FlexWrapper justifyContent="center">
+                    <FlexWrapper css={{ justifyContent: "center" }}>
                         <FlexItem xs={1 / 1} m={2 / 3}>
                             <article>
                                 <GutterPxs p={32}>

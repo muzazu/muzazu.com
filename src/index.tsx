@@ -9,6 +9,7 @@ import { useThemeConfig } from "./contexts/theme"
 import { theme } from "./types/theme"
 import { HeaderNavigation } from "./components/navigations/header-navigation"
 import { GlobalStyles } from "./components/globals/global-styles"
+import { Footer } from "./components/footer/footer"
 
 // css
 import "./sass/app.scss"
@@ -28,13 +29,12 @@ const App: FC = () => {
     return (
         <Provider store={configureStore()}>
             <ThemeProvider theme={Theme as theme}>
-                <div>
-                    <GlobalStyles />
-                    <HeaderNavigation
-                        onUpdateThemeConfig={toggleNightMode as Function}
-                    />
-                    <Router />
-                </div>
+                <GlobalStyles />
+                <HeaderNavigation
+                    onUpdateThemeConfig={toggleNightMode as Function}
+                />
+                <Router />
+                <Footer />
             </ThemeProvider>
         </Provider>
     )
