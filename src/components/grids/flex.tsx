@@ -7,6 +7,7 @@ export const FlexWrapper: FC = (props) => {
         <div
             css={{
                 display: "flex",
+                flexWrap: "wrap",
             }}
             {...props}
         >
