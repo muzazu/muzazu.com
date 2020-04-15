@@ -4,7 +4,7 @@ import { RouteComponentProps } from "@reach/router"
 import { RootState } from "../reducers"
 import { getArticleDetail, setSelectedId } from "../actions/articles"
 import { articleDetail } from "../selectors/articles"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import Loadable from "@loadable/component"
 import { GutterPxs } from "../components/gutters/gutters"
 import { FlexWrapper, FlexItem } from "../components/grids/flex"
@@ -46,6 +46,21 @@ const PostComponent: FC<Props> = ({
                         name="description"
                         content={article.metadata.desc as string}
                     />
+                    <meta
+                        property="og:title"
+                        content={article.metadata.title as string}
+                    />
+                    <meta property="og:type" content="article" />
+                    <meta
+                        property="og:url"
+                        content={`${process.env.REACT_APP_DOMAIN}/${dateId}/${postId}`}
+                    />
+                    {article.metadata.image && (
+                        <meta
+                            property="og:image"
+                            content={article.metadata.image}
+                        />
+                    )}
                 </Helmet>
                 <Section>
                     <FlexWrapper css={{ justifyContent: "center" }}>

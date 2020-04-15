@@ -5,11 +5,12 @@ export const REQUEST_ARTICLES = "REQUEST_ARTICLES"
 export const RECEIVE_ARTICLES = "RECEIVE_ARTICLES"
 
 export interface metadata {
-    dateId: String
-    title: String
-    lang: String
-    desc: String
-    created_at: String
+    dateId: string
+    title: string
+    lang: string
+    desc: string
+    created_at: string
+    image: string
 }
 
 export interface article {

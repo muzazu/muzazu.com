@@ -12,7 +12,7 @@ import { articleList } from "../selectors/articles"
 import { article } from "../types/articles"
 import { PostItem } from "../components/post/post-item"
 import { DeviderWithText } from "../components/devider/devider-with-text"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 const mapStateToProps = (state: RootState) => ({
     articles: articleList(state),
@@ -46,6 +46,16 @@ const HomeComponent: FC<Props> = ({
             <Helmet>
                 <title>muzazu</title>
                 <meta name="description" content="poofs my stories" />
+                <meta property="og:title" content="muzazu" />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content={`${process.env.REACT_APP_DOMAIN}`}
+                />
+                <meta
+                    property="og:image"
+                    content={`${process.env.REACT_APP_DOMAIN}/android-chrome-512x512.png`}
+                />
             </Helmet>
             <FullSizeJumbroton>
                 <Section>
