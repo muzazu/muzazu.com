@@ -38,9 +38,9 @@ export const HeaderNavigation: FC<Props> = (props) => {
                             xs={1 / 3}
                             css={{ textAlign: "right", alignSelf: "center" }}
                         >
-                            <label>
+                            {mode && (
                                 <Toggle
-                                    defaultChecked={mode !== "night"}
+                                    defaultChecked={mode !== "dark"}
                                     icons={{
                                         unchecked: (
                                             <Moon
@@ -65,7 +65,7 @@ export const HeaderNavigation: FC<Props> = (props) => {
                                         props.onUpdateThemeConfig(mode)
                                     }
                                 />
-                            </label>
+                            )}
                         </FlexItem>
                     </FlexWrapper>
                 </GutterPxs>

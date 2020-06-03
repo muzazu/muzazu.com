@@ -1,3 +1,14 @@
 {
-    "presets": ["react-app", "@emotion/babel-preset-css-prop"]
+    "presets": [
+        "react-app",
+        [
+            "@emotion/babel-preset-css-prop",
+            {
+                "autoLabel": true,
+                "labelFormat": "[local]",
+                "useBuiltIns": false,
+                "throwIfNamespace": true
+            }
+        ]
+    ]
 }

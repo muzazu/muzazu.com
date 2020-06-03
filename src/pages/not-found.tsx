@@ -5,7 +5,7 @@ import { Section } from "../components/sections/section"
 import { Link, RouteComponentProps } from "@reach/router"
 import { ReactComponent as NotFoundSVG } from "../images/404.svg"
 import { GutterPxs } from "../components/gutters/gutters"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 const NotFound: FC<RouteComponentProps> = () => (
     <FullSizeJumbroton>
