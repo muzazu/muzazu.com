@@ -1,44 +1,14 @@
 {
-    "presets": ["react-app", "@emotion/babel-preset-css-prop"],
-    "plugins": [
+    "presets": [
+        "react-app",
         [
-            "emotion",
+            "@emotion/babel-preset-css-prop",
             {
-                // sourceMap is on by default but source maps are dead code eliminated in production
-                "sourceMap": true,
                 "autoLabel": true,
                 "labelFormat": "[local]",
-                "cssPropOptimization": true
+                "useBuiltIns": false,
+                "throwIfNamespace": true
             }
         ]
-    ],
-
-    "env": {
-        "production": {
-            "presets": [
-                "react-app",
-                [
-                    "@emotion/babel-preset-css-prop",
-                    {
-                        "sourceMap": false,
-                        "autoLabel": true,
-                        "labelFormat": "[local]",
-                        "cssPropOptimization": true
-                    }
-                ]
-            ],
-            "plugins": [
-                [
-                    "emotion",
-                    {
-                        // sourceMap is on by default but source maps are dead code eliminated in production
-                        "sourceMap": false,
-                        "autoLabel": true,
-                        "labelFormat": "[local]",
-                        "cssPropOptimization": true
-                    }
-                ]
-            ]
-        }
-    }
+    ]
 }

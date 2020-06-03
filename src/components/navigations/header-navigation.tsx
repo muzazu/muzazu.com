@@ -40,8 +40,7 @@ export const HeaderNavigation: FC<Props> = (props) => {
                         >
                             {mode && (
                                 <Toggle
-                                    defaultChecked={mode !== "night"}
-                                    checked={mode !== "night"}
+                                    defaultChecked={mode !== "dark"}
                                     icons={{
                                         unchecked: (
                                             <Moon

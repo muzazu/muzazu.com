@@ -1,9 +1,9 @@
-import { theme } from "../types/theme"
+import { theme, mode } from "../types/theme"
 import merge from "lodash/merge"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-// default state
-const defaultTheme: theme = {
+// theme
+export const defaultTheme: theme = {
     mode: "light",
     color: "#000",
     background: "#fff",
@@ -18,44 +18,51 @@ const defaultTheme: theme = {
         xxl: 1920,
     },
 }
-const loadStorage = () => {
-    try {
-        const getTheme = window.localStorage.getItem("theme")
-        if (getTheme) {
-            const combinedTheme: theme = merge(
-                defaultTheme,
-                JSON.parse(getTheme)
-            )
-            window.localStorage.setItem("theme", JSON.stringify(combinedTheme))
-            return combinedTheme
-        }
-        return defaultTheme
-    } catch (err) {
-        return defaultTheme
-    }
-}
-const Theme = loadStorage()
 
+// default theme
+export const lightTheme: theme = merge({}, defaultTheme, {
+    mode: "light",
+    color: "#000",
+    background: "#fff",
+})
+
+// dark theme
+export const darkTheme: theme = merge({}, defaultTheme, {
+    mode: "dark",
+    background: "#363333 !important",
+    color: "#fff !important",
+})
+
+/**
+ * handle get / set theme
+ */
 export const useThemeConfig = () => {
-    const [localTheme, setTheme] = useState(Theme)
+    const [themeMode, setThemeMode] = useState<mode>("light")
+    const [componentMounted, setComponentMounted] = useState(false)
 
-    type mode = "night" | "light"
-
-    const toggleNightMode = (mode: mode): void => {
-        const activeMode: mode = mode === "night" ? "light" : "night"
-        const combinedTheme: theme = merge(localTheme, {
-            mode: activeMode,
-            background:
-                activeMode === "night"
-                    ? "#363333 !important"
-                    : "#fff !important",
-            color:
-                activeMode === "night" ? "#fff !important" : "#000 !important",
-        })
-        window.localStorage.setItem("theme", JSON.stringify(combinedTheme))
-        setTheme(combinedTheme)
-        window.location.reload()
+    const setMode = (mode: mode): void => {
+        window.localStorage.setItem("theme", mode)
+        setThemeMode(mode)
     }
 
-    return [localTheme, toggleNightMode]
+    const toggleDarkMode = (mode: mode): void => {
+        const activeMode: mode = mode === "dark" ? "light" : "dark"
+        setMode(activeMode)
+    }
+
+    useEffect(() => {
+        const localTheme: mode = window.localStorage.getItem("theme") as mode
+
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches &&
+        !localTheme
+            ? setMode("dark")
+            : localTheme
+            ? setThemeMode(localTheme)
+            : setMode("light")
+
+        setComponentMounted(true)
+    }, [])
+
+    return [themeMode, toggleDarkMode, componentMounted]
 }

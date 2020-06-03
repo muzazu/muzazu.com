@@ -34,13 +34,13 @@
     "scripts": {
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
-        "snap": "react-snap",
+        "postbuild": "react-snap",
         "test": "node scripts/test.js"
     },
     "reactSnap": {
+        "inlineCss": true,
         "source": "build",
-        "sourceMaps": false,
-        "inlineCss": true
+        "sourceMaps": false
     },
     "devDependencies": {
         "@babel/core": "7.7.4",

@@ -54,7 +54,7 @@ const HomeComponent: FC<Props> = ({
                 />
                 <meta
                     property="og:image"
-                    content={`${process.env.REACT_APP_DOMAIN}/android-chrome-512x512.png`}
+                    content={`${process.env.REACT_APP_DOMAIN}android-chrome-512x512.png`}
                 />
             </Helmet>
             <FullSizeJumbroton>

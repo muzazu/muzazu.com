@@ -1,3 +1,5 @@
+export type mode = "dark" | "light"
+
 export interface breakPoints {
     xs?: number
     s?: number
@@ -8,7 +10,7 @@ export interface breakPoints {
 }
 
 export interface theme {
-    mode: "night" | "light"
+    mode: "dark" | "light"
     color: string
     background: string
     textSize: string

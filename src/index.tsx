@@ -6,8 +6,7 @@ import configureStore from "./store"
 import TagManager, { TagManagerArgs } from "react-gtm-module"
 import Router from "./components/routes/routes"
 import { ThemeProvider } from "emotion-theming"
-import { useThemeConfig } from "./contexts/theme"
-import { theme } from "./types/theme"
+import { useThemeConfig, darkTheme, lightTheme } from "./contexts/theme"
 import { HeaderNavigation } from "./components/navigations/header-navigation"
 import { GlobalStyles } from "./components/globals/global-styles"
 import { Footer } from "./components/footer/footer"
@@ -35,21 +34,24 @@ const preloadedState = window.__PRELOADED_STATE__
 delete window.__PRELOADED_STATE__
 
 const App: FC = () => {
-    const [Theme, toggleNightMode] = useThemeConfig()
+    const [Theme, toggleDarkMode, themeLoaded]: any = useThemeConfig()
 
     const tagManagerArgs: TagManagerArgs = {
         gtmId: process.env.REACT_APP_GTM!,
     }
     TagManager.initialize(tagManagerArgs)
 
+    if (!themeLoaded) return <div></div>
+
+    console.log(lightTheme)
+    console.log(darkTheme)
+
     return (
         <Provider store={configureStore(preloadedState)}>
-            <ThemeProvider theme={Theme as theme}>
+            <ThemeProvider theme={Theme === "dark" ? darkTheme : lightTheme}>
                 <HelmetProvider>
                     <GlobalStyles />
-                    <HeaderNavigation
-                        onUpdateThemeConfig={toggleNightMode as Function}
-                    />
+                    <HeaderNavigation onUpdateThemeConfig={toggleDarkMode} />
                     <Router />
                     <Footer />
                 </HelmetProvider>

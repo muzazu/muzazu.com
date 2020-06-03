@@ -47,6 +47,13 @@ const PostComponent: FC<Props> = ({
                         content={article.metadata.desc as string}
                     />
                     <meta
+                        property="og:description"
+                        content={article.metadata.desc as string}
+                    />
+                    <meta property="og:site_name" content="muzazu.com" />
+                    <meta property="og:locale" content="en_US" />
+                    <meta property="og:locale:alternate" content="id_ID" />
+                    <meta
                         property="og:title"
                         content={article.metadata.title as string}
                     />
@@ -55,10 +62,15 @@ const PostComponent: FC<Props> = ({
                         property="og:url"
                         content={`${process.env.REACT_APP_DOMAIN}/${dateId}/${postId}`}
                     />
-                    {article.metadata.image && (
+                    {article.metadata.image ? (
                         <meta
                             property="og:image"
                             content={article.metadata.image}
+                        />
+                    ) : (
+                        <meta
+                            property="og:image"
+                            content={`${process.env.REACT_APP_DOMAIN}android-chrome-512x512.png`}
                         />
                     )}
                 </Helmet>

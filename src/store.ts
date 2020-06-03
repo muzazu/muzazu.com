@@ -5,7 +5,7 @@ import thunk, { ThunkAction, ThunkMiddleware } from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 
 export default function configureStore(initialState = {}) {
-    const middlewares: [any] = [thunk as ThunkMiddleware]
+    const middlewares: [ThunkMiddleware] = [thunk]
     let composeDevTool: any
     if (process.env.NODE_ENV !== "production") {
         middlewares.push(createLogger())
