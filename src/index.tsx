@@ -35,16 +35,13 @@ delete window.__PRELOADED_STATE__
 
 const App: FC = () => {
     const [Theme, toggleDarkMode, themeLoaded]: any = useThemeConfig()
-
+    
     const tagManagerArgs: TagManagerArgs = {
         gtmId: process.env.REACT_APP_GTM!,
     }
     TagManager.initialize(tagManagerArgs)
 
     if (!themeLoaded) return <div></div>
-
-    console.log(lightTheme)
-    console.log(darkTheme)
 
     return (
         <Provider store={configureStore(preloadedState)}>

@@ -1,8 +1,9 @@
 import React, { FC } from "react"
 import Loadable from "@loadable/component"
-import { Router } from "@reach/router"
+import { Router, Location } from "@reach/router"
+import { TransitionGroup, CSSTransition } from "react-transition-group"
 
-const Loading = <>Loading...</>
+const Loading = <></>
 
 const Home = Loadable(() => import("../../containers/home"), {
     fallback: Loading,
@@ -16,11 +17,23 @@ const NotFound = Loadable(() => import("../../pages/not-found"), {
 
 const Routes: FC = () => {
     return (
-        <Router>
-            <Home path="/" />
-            <Post path="/:dateId/:postId" />
-            <NotFound default />
-        </Router>
+        <Location>
+            {({ location }) => (
+                <TransitionGroup className="transition-group">
+                    <CSSTransition
+                        key={location.key}
+                        classNames="router--fade"
+                        timeout={500}
+                    >
+                        <Router location={location} css={{minHeight: "100vh"}}>
+                            <Home path="/" />
+                            <Post path="/:dateId/:postId" />
+                            <NotFound default />
+                        </Router>
+                    </CSSTransition>
+                </TransitionGroup>
+            )}
+        </Location>
     )
 }
 

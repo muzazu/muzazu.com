@@ -5,6 +5,7 @@ import { FullSizeJumbroton } from "../components/sections/full-size-jumbroton"
 import { Section } from "../components/sections/section"
 import { GutterPxs } from "../components/gutters/gutters"
 import { ReactComponent as Human } from "../images/human.svg"
+import { ReactComponent as BGHuman } from "../images/bg-human.svg"
 import { connect } from "react-redux"
 import { RootState } from "../reducers"
 import { getArticlesIds, getArticles } from "../actions/articles"
@@ -13,6 +14,8 @@ import { article } from "../types/articles"
 import { PostItem } from "../components/post/post-item"
 import { DeviderWithText } from "../components/devider/devider-with-text"
 import { Helmet } from "react-helmet-async"
+import { useTheme } from "emotion-theming"
+import { theme } from "../types/theme"
 
 const mapStateToProps = (state: RootState) => ({
     articles: articleList(state),
@@ -33,6 +36,7 @@ const HomeComponent: FC<Props> = ({
     articles,
     articleIds,
 }) => {
+    const activeTheme: theme = useTheme()
     useEffect(() => {
         if (!articleIds.ids.length) getArticleIds()
     }, [articleIds.ids.length, getArticleIds])
@@ -80,17 +84,50 @@ const HomeComponent: FC<Props> = ({
                             xs={1 / 1}
                             m={1 / 3}
                             xl={1 / 3}
-                            css={{ alignSelf: "flex-end" }}
+                            css={{ alignSelf: "center" }}
                         >
                             <GutterPxs p={24}>
-                                <Human
+                                <figure
                                     css={{
-                                        width: "100%",
-                                        height: "auto",
+                                        maxWidth: "100%",
+                                        position: "relative",
+                                        overflow: "hidden",
                                     }}
-                                    viewBox={"0 0 700 700"}
-                                    preserveAspectRatio="xMidYMid meet"
-                                />
+                                >
+                                    <BGHuman
+                                        css={{
+                                            "> path": {
+                                                fill:
+                                                    activeTheme.mode === "dark"
+                                                        ? "#da8cbb!important"
+                                                        : "#9EF0F0!important",
+                                            },
+                                        }}
+                                    />
+                                    <Human
+                                        css={{
+                                            width: "100%",
+                                            height: "auto",
+                                            position: "absolute",
+                                            left: "25%",
+                                            top: "10%",
+                                            "> .human__pants": {
+                                                fill:
+                                                    activeTheme.mode === "dark"
+                                                        ? "#e1e1e1!important"
+                                                        : "#2f2e41!important",
+                                            },
+                                            "> .human__shoe": {
+                                                fill:
+                                                    activeTheme.mode === "dark"
+                                                        ? "#525252!important"
+                                                        : "#2f2e41!important",
+                                            },
+                                        }}
+                                        viewBox={"0 0 700 700"}
+                                        preserveAspectRatio="xMidYMid meet"
+                                    />
+                                </figure>
                             </GutterPxs>
                         </FlexItem>
                     </FlexWrapper>
