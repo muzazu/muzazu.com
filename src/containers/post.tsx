@@ -9,6 +9,7 @@ import Loadable from "@loadable/component"
 import { GutterPxs } from "../components/gutters/gutters"
 import { FlexWrapper, FlexItem } from "../components/grids/flex"
 import { Section } from "../components/sections/section"
+import Skeleton from "react-loading-skeleton"
 
 const mapStateToProps = (state: RootState) => ({
     article: articleDetail(state),
@@ -23,7 +24,11 @@ type Props = ReturnType<typeof mapStateToProps> &
     RouteComponentProps<{ dateId: string; postId: string }>
 
 const MD = Loadable(() => import("react-markdown"), {
-    fallback: <div>Loading...</div>,
+    fallback: (
+        <GutterPxs mt={8}>
+            <Skeleton count={8} />
+        </GutterPxs>
+    ),
 })
 
 const PostComponent: FC<Props> = ({
@@ -110,7 +115,28 @@ const PostComponent: FC<Props> = ({
                 </Section>
             </>
         )
-    else return <div>Loading...</div>
+    else
+        return (
+            <Section>
+                <FlexWrapper css={{ justifyContent: "center" }}>
+                    <FlexItem xs={1 / 1} m={2 / 3}>
+                        <article>
+                            <GutterPxs p={32}>
+                                <GutterPxs mb={24}>
+                                    <Skeleton height={30} />
+                                </GutterPxs>
+                                <GutterPxs mb={12}>
+                                    <Skeleton css={{ marginBottom: "12px" }} />
+                                </GutterPxs>
+                                <Skeleton
+                                    count={8}
+                                />
+                            </GutterPxs>
+                        </article>
+                    </FlexItem>
+                </FlexWrapper>
+            </Section>
+        )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostComponent)

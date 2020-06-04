@@ -19,10 +19,6 @@ export const FlexWrapper: FC = (props) => {
 /**
  * Flex Items
  */
-interface RootState {
-    theme: theme
-}
-
 const widthTransform = (
     w: Array<number | undefined>
 ): Array<string | null> | null => {
@@ -39,8 +35,8 @@ export const FlexItem: FC<FlexItemProps> = (props) => {
     const { children, xs, s, m, l, xl, xxl } = props
     return (
         <div
-            css={(theme: theme) =>
-                mq(theme.breakPoints)({
+            css={(activeTheme: theme) =>
+                mq(activeTheme.breakPoints)({
                     width: widthTransform([xs, s, m, l, xl, xxl]),
                 })
             }
