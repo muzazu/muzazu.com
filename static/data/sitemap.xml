@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+            <url>
+
+                <loc>https://muzazu.com/</loc>
+
+                <lastmod>2020-12-27</lastmod>
+
+                <changefreq>always</changefreq>
+
+                <priority>1</priority>
+
+            </url>
+        
+            <url>
+
+                <loc>https://muzazu.com/3-2020/hai%20world</loc>
+
+                <lastmod>2020-04-11</lastmod>
+
+                <changefreq>monthly</changefreq>
+
+                <priority>0.8</priority>
+
+            </url>
+            </urlset>
