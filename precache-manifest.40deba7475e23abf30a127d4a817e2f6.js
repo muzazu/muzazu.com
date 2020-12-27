@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "32890d454049f5ae3c1ae7fffa615483",
+    "revision": "e7d71188fc6d928d6e596d373d145e5c",
     "url": "/muzazu.com/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/muzazu.com/static/css/3.4a405dcf.chunk.css"
   },
   {
-    "revision": "f8862a0b162cf166a064",
+    "revision": "093379639b80e8832255",
     "url": "/muzazu.com/static/css/main.083e1b4a.chunk.css"
   },
   {
@@ -44,8 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/muzazu.com/static/js/7.72b18b71.chunk.js"
   },
   {
-    "revision": "f8862a0b162cf166a064",
-    "url": "/muzazu.com/static/js/main.44e76710.chunk.js"
+    "revision": "093379639b80e8832255",
+    "url": "/muzazu.com/static/js/main.e7524018.chunk.js"
   },
   {
     "revision": "9d1c646c38e67a18835e",

@@ -2,7 +2,7 @@
   "files": {
     "static/js/0.05aacd81.chunk.js": "/muzazu.com/static/js/0.05aacd81.chunk.js",
     "main.css": "/muzazu.com/static/css/main.083e1b4a.chunk.css",
-    "main.js": "/muzazu.com/static/js/main.44e76710.chunk.js",
+    "main.js": "/muzazu.com/static/js/main.e7524018.chunk.js",
     "runtime-main.js": "/muzazu.com/static/js/runtime-main.a4896259.js",
     "static/css/3.4a405dcf.chunk.css": "/muzazu.com/static/css/3.4a405dcf.chunk.css",
     "static/js/3.25c24f09.chunk.js": "/muzazu.com/static/js/3.25c24f09.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/6.92f9ae5b.chunk.js": "/muzazu.com/static/js/6.92f9ae5b.chunk.js",
     "static/js/7.72b18b71.chunk.js": "/muzazu.com/static/js/7.72b18b71.chunk.js",
     "index.html": "/muzazu.com/index.html",
-    "precache-manifest.cf914f2d6f215c26edb9ffcd37afe1f9.js": "/muzazu.com/precache-manifest.cf914f2d6f215c26edb9ffcd37afe1f9.js",
+    "precache-manifest.40deba7475e23abf30a127d4a817e2f6.js": "/muzazu.com/precache-manifest.40deba7475e23abf30a127d4a817e2f6.js",
     "service-worker.js": "/muzazu.com/service-worker.js",
     "static/js/3.25c24f09.chunk.js.LICENSE": "/muzazu.com/static/js/3.25c24f09.chunk.js.LICENSE",
     "static/js/4.5c2151d8.chunk.js.LICENSE": "/muzazu.com/static/js/4.5c2151d8.chunk.js.LICENSE",
@@ -29,6 +29,6 @@
     "static/css/3.4a405dcf.chunk.css",
     "static/js/3.25c24f09.chunk.js",
     "static/css/main.083e1b4a.chunk.css",
-    "static/js/main.44e76710.chunk.js"
+    "static/js/main.e7524018.chunk.js"
   ]
 }

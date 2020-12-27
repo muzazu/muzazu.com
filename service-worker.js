@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/muzazu.com/precache-manifest.cf914f2d6f215c26edb9ffcd37afe1f9.js"
+  "/muzazu.com/precache-manifest.40deba7475e23abf30a127d4a817e2f6.js"
 );
 
 self.addEventListener('message', (event) => {
