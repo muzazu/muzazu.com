@@ -19,7 +19,7 @@
         "lodash": "^4.17.19",
         "prop-types": "^15.7.2",
         "react": "^16.12.0",
-        "react-dev-utils": "^10.0.0",
+        "react-dev-utils": "^11.0.4",
         "react-dom": "^16.12.0",
         "react-gtm-module": "^2.0.8",
         "react-loading-skeleton": "^2.0.1",
