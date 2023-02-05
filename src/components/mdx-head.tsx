@@ -23,7 +23,7 @@ export default function MdxHead({ params, og }: MdxHeadProps) {
 		return null
 	}
 
-	const title = `${mdxDoc.title} - Taxonomy`
+	const title = `${mdxDoc.title} - ${process.env.NEXT_PUBLIC_SITE_TITLE}`
 	const url = process.env.NEXT_PUBLIC_SITE_URL
 	let ogUrl = new URL(`${url}/og.jpg`)
 
