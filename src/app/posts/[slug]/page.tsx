@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 
 import { Mdx } from '@/components/mdx'
+import { usDateString } from '@/lib/utils'
 
 interface DocPageProps {
 	params: {
@@ -26,8 +27,14 @@ export default async function DocPage({ params }: DocPageProps) {
 	}
 
 	return (
-		<main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+		<main className="relative">
 			<div className="mx-auto w-full min-w-0">
+				<div className="mb-4">
+					<h1 className="text-xl font-bold">{doc.title}</h1>
+					<span className="text-sm text-rose-800">
+						{usDateString(doc.date)}
+					</span>
+				</div>
 				<Mdx code={doc.mdxCode} />
 			</div>
 		</main>
