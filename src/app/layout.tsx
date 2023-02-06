@@ -21,7 +21,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
 			<head />
-			<body className="min-h-screen bg-slate-900 text-slate-100">
+			<body className="min-h-screen bg-slate-900 text-slate-100 px-4">
 				<div className="bg-[url('/pattern.svg')] bg-repeat min-h-screen">
 					<div className="container m-auto">
 						<header className="pt-24 mb-12">
