@@ -8,6 +8,7 @@ export default function Head() {
 				name="description"
 				content="Just some random thought and stuffs"
 			/>
+			<link rel="canonical" href={process.env.NEXT_PUBLIC_SITE_URL} />
 
 			<meta
 				property="og:title"
@@ -20,7 +21,7 @@ export default function Head() {
 			/>
 			<meta
 				property="og:image"
-				content={`{process.env.NEXT_PUBLIC_SITE_URL}/android-chrome-512x512.png`}
+				content={`${process.env.NEXT_PUBLIC_SITE_URL}/android-chrome-512x512.png`}
 			/>
 			<meta
 				name="twitter:title"
@@ -33,7 +34,7 @@ export default function Head() {
 			/>
 			<meta
 				name="twitter:image"
-				content={`{process.env.NEXT_PUBLIC_SITE_URL}/android-chrome-512x512.png`}
+				content={`${process.env.NEXT_PUBLIC_SITE_URL}/android-chrome-512x512.png`}
 			/>
 		</>
 	)
