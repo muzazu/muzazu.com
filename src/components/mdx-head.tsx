@@ -40,7 +40,7 @@ export default function MdxHead({ params, og }: MdxHeadProps) {
 	return (
 		<>
 			<title>{title}</title>
-			<link rel="canonical" href={absoluteUrl(mdxDoc.url)} />
+			<link rel="canonical" href={absoluteUrl(`/posts/${mdxDoc.url}`)} />
 			<meta name="description" content={ogDescription} />
 			<meta charSet="utf-8" />
 			<meta name="viewport" content="width=device-width" />
